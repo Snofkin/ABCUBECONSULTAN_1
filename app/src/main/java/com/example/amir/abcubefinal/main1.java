@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -40,14 +41,14 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
 
 public class main1 extends AppCompatActivity implements View.OnClickListener {
-    String server_url = "http://ranjansitikhu.com.np/abcube.php";
+    String server_url = "http://192.168.0.84/Android/abcube.php";
+    //String server_url = "http://ranjansitikhu.com.np/abcube.php";
     ImageView ImageView;
     ViewGroup viewGroup;
     Button buttonCamera, buttonGallery, Clear;
@@ -283,9 +284,11 @@ public class main1 extends AppCompatActivity implements View.OnClickListener {
                 switch (checkedId) {
                     case R.id.male:
                         Gender = (RadioButton) findViewById(R.id.male);
+                        Log.d("male",Gender.getText().toString());
                         break;
                     case R.id.female:
                         Gender = (RadioButton) findViewById(R.id.female);
+                        Log.d("female",Gender.getText().toString());
                         break;
                 }
             }
@@ -299,7 +302,6 @@ public class main1 extends AppCompatActivity implements View.OnClickListener {
         City = (EditText) findViewById(R.id.city);
         Personal_Email = (EditText) findViewById(R.id.email);
         Phone = (EditText) findViewById(R.id.mobile);
-        Course = (EditText) findViewById(R.id.course);
         Nationality = (EditText) findViewById(R.id.nationality);
         Citizenship = (EditText) findViewById(R.id.citizenship);
         Passport_no = (EditText) findViewById(R.id.pass_no);
@@ -449,6 +451,7 @@ public class main1 extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void submitall() {
+        Log.d("i ma","amir");
         final String first_name, last_name, country, personal_address, dob, personal_email, course, citizenship, nationality, pass_no,
                 visa_no, visa_expiry, phone_no, contact, address, email, phone, relation, pass_expiry, gender, CFD, CS, visa_grant, ephone;
 
@@ -517,6 +520,7 @@ public class main1 extends AppCompatActivity implements View.OnClickListener {
         visa_grant = Visa_Granted.getText().toString();
         visa_expiry = toDateEtxt.getText().toString();
         gender = Gender.getText().toString();
+        Log.d("gender",gender);
         CFD = courseedate.getText().toString();
         CS = currentschool.getText().toString();
 
@@ -618,7 +622,7 @@ public class main1 extends AppCompatActivity implements View.OnClickListener {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
+                    error.printStackTrace();
                     Toast.makeText(main1.this, "Enter the image", Toast.LENGTH_SHORT).show();
                 }
 

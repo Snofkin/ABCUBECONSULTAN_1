@@ -26,7 +26,8 @@ public class Splash extends Activity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    Intent openMainactivity = new Intent("com.example.amir.MAIN");  //activity to display after logo
+                    Intent openMainactivity = new Intent(Splash.this,
+                            main1.class);  //activity to display after logo
                     startActivity(openMainactivity);
 
                 }
